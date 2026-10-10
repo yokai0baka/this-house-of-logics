@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b0u06l8unqlm1"]
+
+[ext_resource type="Script" uid="uid://bk2n7xyxguyca" path="res://scripts/key.gd" id="1_yk2u2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ndie3"]
+radius = 0.3
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yk2u2"]
+albedo_color = Color(1, 0.75686276, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_isfe7"]
+material = SubResource("StandardMaterial3D_yk2u2")
+radius = 0.1
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vaj5l"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.33333334)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fttkb"]
+material = SubResource("StandardMaterial3D_vaj5l")
+radius = 0.2
+height = 0.6
+
+[node name="Key" type="Node3D" unique_id=298564625]
+script = ExtResource("1_yk2u2")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1778691335]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1876063199]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ndie3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1604117325]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_isfe7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=593257286]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_fttkb")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

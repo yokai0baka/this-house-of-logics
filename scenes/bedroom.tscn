@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cb6aensntc51v"]
+
+[ext_resource type="PackedScene" uid="uid://c8wklkcuql1s" path="res://scenes/player.tscn" id="1_0grwd"]
+[ext_resource type="PackedScene" uid="uid://dc3hpvq6atw44" path="res://scenes/door.tscn" id="3_7lolw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_errlg"]
+albedo_color = Color(0, 0.47843137, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_isfe7"]
+material = SubResource("StandardMaterial3D_errlg")
+size = Vector2(10, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_errlg"]
+points = PackedVector3Array(5.077377, 0.07933401, 5.077377, -5.077377, -0.07933401, -5.077377, -5.077377, 0.07933401, -5.077377, 5.077377, -0.07933401, -5.077377, -5.077377, -0.07933401, 5.077377, -5.077377, 0.07933401, 5.077377, 5.077377, 0.07933401, -5.077377, 5.077377, -0.07933401, 5.077377)
+
+[sub_resource type="Environment" id="Environment_isfe7"]
+
+[node name="Test" type="Node3D" unique_id=1437307857]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2099143494]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1164544339]
+mesh = SubResource("PlaneMesh_isfe7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=558553022]
+shape = SubResource("ConvexPolygonShape3D_errlg")
+
+[node name="Player" parent="." unique_id=508518757 instance=ExtResource("1_0grwd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 1.6)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1776951398]
+environment = SubResource("Environment_isfe7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=423179545]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 1.2, 0)
+
+[node name="Door" parent="." unique_id=967388445 instance=ExtResource("3_7lolw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.229334, -4.5)
+door_destination = "bedroom"

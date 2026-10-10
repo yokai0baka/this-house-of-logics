@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cy0cagr8mm24f"]
+
+[ext_resource type="PackedScene" uid="uid://c8wklkcuql1s" path="res://scenes/player.tscn" id="1_errlg"]
+[ext_resource type="PackedScene" uid="uid://b0u06l8unqlm1" path="res://scenes/key.tscn" id="2_bl13t"]
+[ext_resource type="PackedScene" uid="uid://dc3hpvq6atw44" path="res://scenes/door.tscn" id="3_iyx0m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_errlg"]
+albedo_color = Color(0, 0.47843137, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_isfe7"]
+material = SubResource("StandardMaterial3D_errlg")
+size = Vector2(10, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_errlg"]
+points = PackedVector3Array(5.077377, 0.07933401, 5.077377, -5.077377, -0.07933401, -5.077377, -5.077377, 0.07933401, -5.077377, 5.077377, -0.07933401, -5.077377, -5.077377, -0.07933401, 5.077377, -5.077377, 0.07933401, 5.077377, 5.077377, 0.07933401, -5.077377, 5.077377, -0.07933401, 5.077377)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bl13t"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bl13t"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="Environment" id="Environment_isfe7"]
+
+[node name="Test" type="Node3D" unique_id=1437307857]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2099143494]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1164544339]
+mesh = SubResource("PlaneMesh_isfe7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=558553022]
+shape = SubResource("ConvexPolygonShape3D_errlg")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=637748963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -1.9)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1253212096]
+mesh = SubResource("BoxMesh_bl13t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=273727466]
+shape = SubResource("ConvexPolygonShape3D_bl13t")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=1837730850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.099999994, -1.9)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3" unique_id=1818373964]
+mesh = SubResource("BoxMesh_bl13t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=1377427527]
+shape = SubResource("ConvexPolygonShape3D_bl13t")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="." unique_id=609567383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3000002, -0.20000002, -1.9)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4" unique_id=1919585257]
+mesh = SubResource("BoxMesh_bl13t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4" unique_id=2143458329]
+shape = SubResource("ConvexPolygonShape3D_bl13t")
+
+[node name="Player" parent="." unique_id=508518757 instance=ExtResource("1_errlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 1.6)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1776951398]
+environment = SubResource("Environment_isfe7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=423179545]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 1.2, 0)
+
+[node name="Key" parent="." unique_id=298564625 instance=ExtResource("2_bl13t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1000001, 0.5, -1.6)
+key_type = "bathroom"
+
+[node name="Key2" parent="." unique_id=921273090 instance=ExtResource("2_bl13t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70000017, 0.8, -1.6)
+key_type = "bedroom"
+
+[node name="Door" parent="." unique_id=967388445 instance=ExtResource("3_iyx0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.229334, -4.5)
+door_destination = "bedroom"

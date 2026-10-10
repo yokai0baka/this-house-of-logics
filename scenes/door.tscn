@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dc3hpvq6atw44"]
+
+[ext_resource type="Script" uid="uid://cmym41sa6um7h" path="res://scripts/door.gd" id="1_hpvv5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_isfe7"]
+size = Vector3(1.25, 2.5, 0.15)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5f452"]
+data = PackedVector3Array(-0.625, 1.25, 0.074999996, 0.625, 1.25, 0.074999996, -0.625, -1.25, 0.074999996, 0.625, 1.25, 0.074999996, 0.625, -1.25, 0.074999996, -0.625, -1.25, 0.074999996, 0.625, 1.25, -0.074999996, -0.625, 1.25, -0.074999996, 0.625, -1.25, -0.074999996, -0.625, 1.25, -0.074999996, -0.625, -1.25, -0.074999996, 0.625, -1.25, -0.074999996, 0.625, 1.25, 0.074999996, 0.625, 1.25, -0.074999996, 0.625, -1.25, 0.074999996, 0.625, 1.25, -0.074999996, 0.625, -1.25, -0.074999996, 0.625, -1.25, 0.074999996, -0.625, 1.25, -0.074999996, -0.625, 1.25, 0.074999996, -0.625, -1.25, -0.074999996, -0.625, 1.25, 0.074999996, -0.625, -1.25, 0.074999996, -0.625, -1.25, -0.074999996, 0.625, 1.25, 0.074999996, -0.625, 1.25, 0.074999996, 0.625, 1.25, -0.074999996, -0.625, 1.25, 0.074999996, -0.625, 1.25, -0.074999996, 0.625, 1.25, -0.074999996, -0.625, -1.25, 0.074999996, 0.625, -1.25, 0.074999996, -0.625, -1.25, -0.074999996, 0.625, -1.25, 0.074999996, 0.625, -1.25, -0.074999996, -0.625, -1.25, -0.074999996)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_isfe7"]
+size = Vector3(1.25, 2.5, 0.17)
+
+[node name="Door" type="Node3D" unique_id=967388445]
+script = ExtResource("1_hpvv5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1301132655]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=427948795]
+mesh = SubResource("BoxMesh_isfe7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=895011463]
+shape = SubResource("ConcavePolygonShape3D_5f452")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1862116732]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1810308539]
+shape = SubResource("BoxShape3D_isfe7")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
