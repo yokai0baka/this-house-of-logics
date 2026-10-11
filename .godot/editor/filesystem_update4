@@ -1,0 +1,5 @@
+res://scenes/test.tscn
+res://globals/scripts/global.gd
+res://scripts/door.gd
+res://globals/scenes/transition_door.tscn
+res://globals/scripts/transition_door.gd

@@ -60,6 +60,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 2.1000001), Vector3(0, 0, 2.4), Vector3(0, 0, -2.1)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next_room"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bqq7t"]
 _data = {
@@ -86,3 +100,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.1000001)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=269337908]
 libraries/ = SubResource("AnimationLibrary_bqq7t")
+autoplay = &"default"

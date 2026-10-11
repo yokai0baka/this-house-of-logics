@@ -20,6 +20,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact") && in_range:
 		if door_destination in Global.keys_obtained:
-			get_tree().change_scene_to_file("res://scenes/" + door_destination + ".tscn")
+			Global.next_room = door_destination
+			await get_tree().process_frame
+			get_tree().change_scene_to_file("res://globals/scenes/transition_door.tscn")
 		else:
 			print("You have'nt a key")
